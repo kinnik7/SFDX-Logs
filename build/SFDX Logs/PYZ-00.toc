@@ -376,7 +376,6 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1008.0_x64__qbz5n2kfra8p0\\Lib\\colorsys.py',
    'PYMODULE'),
-  ('connection', 'C:\\MyProjects\\SFDX Logs\\connection.py', 'PYMODULE'),
   ('contextlib',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1008.0_x64__qbz5n2kfra8p0\\Lib\\contextlib.py',
@@ -393,7 +392,6 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1008.0_x64__qbz5n2kfra8p0\\Lib\\csv.py',
    'PYMODULE'),
-  ('dataManager', 'C:\\MyProjects\\SFDX Logs\\dataManager.py', 'PYMODULE'),
   ('dataclasses',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1008.0_x64__qbz5n2kfra8p0\\Lib\\dataclasses.py',
@@ -648,7 +646,6 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1008.0_x64__qbz5n2kfra8p0\\Lib\\inspect.py',
    'PYMODULE'),
-  ('interface', 'C:\\MyProjects\\SFDX Logs\\interface.py', 'PYMODULE'),
   ('ipaddress',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1008.0_x64__qbz5n2kfra8p0\\Lib\\ipaddress.py',
@@ -669,7 +666,6 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1008.0_x64__qbz5n2kfra8p0\\Lib\\json\\scanner.py',
    'PYMODULE'),
-  ('libraries', 'C:\\MyProjects\\SFDX Logs\\libraries.py', 'PYMODULE'),
   ('logging',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1008.0_x64__qbz5n2kfra8p0\\Lib\\logging\\__init__.py',
@@ -798,6 +794,14 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1008.0_x64__qbz5n2kfra8p0\\Lib\\socket.py',
    'PYMODULE'),
+  ('src', 'C:\\MyProjects\\SFDX Logs\\src\\__init__.py', 'PYMODULE'),
+  ('src.connection',
+   'C:\\MyProjects\\SFDX Logs\\src\\connection.py',
+   'PYMODULE'),
+  ('src.dataManager',
+   'C:\\MyProjects\\SFDX Logs\\src\\dataManager.py',
+   'PYMODULE'),
+  ('src.interface', 'C:\\MyProjects\\SFDX Logs\\src\\interface.py', 'PYMODULE'),
   ('ssl',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1008.0_x64__qbz5n2kfra8p0\\Lib\\ssl.py',

@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(
-    ['SFDX Logs.py'],
+    ['src\\SFDX Logs.py'],
     pathex=[],
     binaries=[],
     datas=[],

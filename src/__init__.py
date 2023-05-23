@@ -6,8 +6,8 @@ from tkinter import messagebox
 from tkinter import ttk
 from ttkthemes import ThemedStyle
 from datetime import datetime, timedelta
-import interface
-import connection
-from connection import Connection as conn
-import dataManager
-from dataManager import DataFromSFDC as dr
+from src.connection import Connection as conn
+from src import interface
+from src import connection
+from src import dataManager
+from src.dataManager import DataFromSFDC as dr
