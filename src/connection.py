@@ -49,7 +49,7 @@ class Connection:
             return
 
     def get_credentials(self):
-        with open('cred.json') as config_file:
+        with open('../cred.json') as config_file:
             config = lib.json.load(config_file)
         return config.get(self.env, {})
 

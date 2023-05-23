@@ -1,10 +1,12 @@
 import libraries as lib
 
+
 def validate_entries(entries):
     for entry in entries:
         if not entry.get():
             return False
     return True
+
 
 class SFDXLogInterface:
     def __init__(self):
@@ -55,11 +57,11 @@ class SFDXLogInterface:
 
     def update_env_options(self):
         environment_options = ['']
-        with open('cred.json', 'r') as conf_file:
-            if lib.os.path.getsize('cred.json') > 0:
+        with open('../cred.json', 'r') as conf_file:
+            if lib.os.path.getsize('../cred.json') > 0:
                 config = lib.json.load(conf_file)
 
-        if lib.os.path.getsize('cred.json') > 0:
+        if lib.os.path.getsize('../cred.json') > 0:
             for env in config:
                 environment_options.append(env)
 
@@ -110,8 +112,8 @@ class SFDXLogInterface:
         old_config = {}
 
         try:
-            with open('cred.json', 'r') as config_file:
-                if lib.os.path.getsize('cred.json') > 0:
+            with open('../cred.json', 'r') as config_file:
+                if lib.os.path.getsize('../cred.json') > 0:
                     old_config = lib.json.load(config_file)
         except FileNotFoundError:
             pass
@@ -129,7 +131,7 @@ class SFDXLogInterface:
 
         old_config[f"{env_name}"] = new_config
 
-        with open('cred.json', 'w') as config_file:
+        with open('../cred.json', 'w') as config_file:
             lib.json.dump(old_config, config_file, indent=4)
 
         self.config_window.destroy()
