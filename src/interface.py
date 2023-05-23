@@ -1,4 +1,4 @@
-import libraries as lib
+import src as lib
 
 
 def validate_entries(entries):

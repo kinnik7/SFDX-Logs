@@ -1,4 +1,4 @@
-import libraries as lib
+import src as lib
 
 if __name__ == "__main__":
     app = lib.interface.SFDXLogInterface()
