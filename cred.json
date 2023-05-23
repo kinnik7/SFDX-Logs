@@ -1,0 +1,26 @@
+{
+    "ENV NAME1": {
+        "username": "username@salesforce.dev",
+        "password": "user_password",
+        "token": "user_token",
+        "clientId": "connected_app_client_id",
+        "secret_key": "connected_app_secret_key",
+        "base_url": "https://yourbaseurl--dev"
+    },
+    "ENV NAME2": {
+        "username": "username@salesforce.dev",
+        "password": "user_password",
+        "token": "user_token",
+        "clientId": "connected_app_client_id",
+        "secret_key": "connected_app_secret_key",
+        "base_url": "https://yourbaseurl--dev"
+    },
+    "ENV NAME3": {
+        "username": "username@salesforce.dev",
+        "password": "user_password",
+        "token": "user_token",
+        "clientId": "connected_app_client_id",
+        "secret_key": "connected_app_secret_key",
+        "base_url": "https://yourbaseurl--dev"
+    }
+}
