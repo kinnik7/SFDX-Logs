@@ -48,7 +48,7 @@ class DataFromSFDC:
             try:
                 expiration_date = lib.datetime.utcnow() + lib.timedelta(hours=int(add_hours))
                 expiration_date_str = expiration_date.strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z'
-
+                success_users = []
                 # Enable logs for the specified users
                 for user_id in user_ids:
                     payload = {
@@ -57,10 +57,9 @@ class DataFromSFDC:
                         'ExpirationDate': expiration_date_str,
                         'DebugLevelId': debug_level_id
                     }
-
                     response = lib.requests.post(instance_url + '/services/data/v52.0/tooling/sobjects/TraceFlag/', json=payload, headers=headers)
-                    if response.status_code == 200:
-                        return {"enabled": {user_id}}
+                    if response.status_code == 201:
+                        success_users.append(user_id)
                     else:
                         content = response.content.decode('utf-8')
                         data = lib.json.loads(content)
@@ -69,8 +68,9 @@ class DataFromSFDC:
                             message = data[0].get("message", "")
                         if message is None:
                             message = response.content
-                        error_message = f"{lib.datetime.now().replace(microsecond=0)}\n\nError during enabling logs: {message}"
+                        error_message = f"{lib.datetime.now().replace(microsecond=0)}\n\nError during enabling logs: {message} ID: [{user_id}]"
                         lib.messagebox.showerror("Error", error_message)
+                return success_users
             except Exception as e:
                 error_message = f"{lib.datetime.now().replace(microsecond=0)}\n\nError during enabling logs: {str(e)}"
                 lib.messagebox.showerror("Error", error_message)

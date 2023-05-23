@@ -37,7 +37,7 @@ class SFDXLogInterface:
 
     def create_widgets(self):
         # First windows [SELECT ENVIRONMENT]
-        welcome_label = lib.ttk.Label(self.window, text="Welcome to SFDC Logs!")
+        welcome_label = lib.ttk.Label(self.window, text="Welcome to SFDX Logs!")
         welcome_label.pack(pady=10)
         label = lib.ttk.Label(self.window, text="Choose the environment:")
         label.pack(pady=5)
@@ -243,7 +243,13 @@ class SFDXLogInterface:
         selected_debug_lvl = self.debug_var.get()
         debug_lvl_id = self.db_lvl_map.get(selected_debug_lvl)
         if (hours != "" and str.isdigit(hours)) and (selected_ids[0] != "") and (debug_lvl_id != ""):
-            self.data_mng.enable_salesforce_logs(hours, selected_ids, debug_lvl_id)
+            enabled_users = self.data_mng.enable_salesforce_logs(hours, selected_ids, debug_lvl_id)
+            if enabled_users is not None:
+                success_message = f"{lib.datetime.now().replace(microsecond=0)}\n\n"
+                success_message += "The currents users are enabled successfully:\n"
+                for en_us in enabled_users:
+                    success_message += "- " + en_us + "\n"
+                lib.messagebox.showinfo("Completed", success_message)
         else:
             warning_message = f"{lib.datetime.now().replace(microsecond=0)}\n\n"
             if hours == "" or not str.isdigit(hours):
