@@ -72,7 +72,7 @@ cd SFDX-Logs/cred.json
 }
 ```
 
-And edit it with the correct informations required.
+And edit it with the correct information required.
 
 ### Windows users:
 
@@ -82,16 +82,6 @@ And edit it with the correct informations required.
 cd SFDX-Logs/dist
 
 ./"SFDX Logs.exe"
-```
-
-### MacOs and Linux users:
-
-1. Navigate to the script directory and run `SFDX Logs.py`:
-
-```bash
-cd SFDX-Logs/src
-
-./"SFDX Logs.py"
 ```
 
 ## How to use it?
