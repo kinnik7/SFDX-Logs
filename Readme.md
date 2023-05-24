@@ -41,7 +41,7 @@ pip install -r requirements.txt
 
 ### Configuration
 
-Before performing any action you need to setup `cred.json` file:
+Before performing any action you need to setup `\static\cred.json` file:
 
 1. You can find it in this directory: 
 
@@ -49,7 +49,7 @@ Before performing any action you need to setup `cred.json` file:
 cd SFDX-Logs/cred.json
 ```
 
-2. Open end edit the `cred.json` file:
+2. Open end edit the `\static\cred.json` file:
 
 ```json
 {
@@ -74,13 +74,13 @@ cd SFDX-Logs/cred.json
 
 ## How to use it?
 
-You can find the **SFDX Logs.exe** file in the current path: `.\dist\`
+You can find the **SFDX Logs.exe** file in the current path: `\dist\`
 
 In the main window, you can select an environment or create a new one:
 
 <img src="https://github.com/kinnik7/SFDX-Logs/blob/master/screenshots/main.JPG" title="" alt="" data-align="center">
 
-Clicking the "New Environment" button allows you to configure a new environment in the `cred.json` file:
+Clicking the "New Environment" button allows you to configure a new environment in the `\static\cred.json` file:
 
 <img src="https://github.com/kinnik7/SFDX-Logs/blob/master/screenshots/newEnvironment.JPG" title="" alt="" data-align="center">
 
