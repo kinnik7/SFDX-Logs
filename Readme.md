@@ -17,8 +17,22 @@ SFDX-Logs is a Python-based tool for managing logs in Salesforce DX (SFDX) proje
 
 - Salesforce connected app
 
+### Download
+
+Click this link to download the source code: [Download SFDX Logs.zip](https://github.com/kinnik7/SFDX-Logs/archive/refs/heads/master.zip)
+
 ## Installation
 
+### Windows
+
+1. Download the `SFDX Logs.zip` file
+2. Extract `SFDX-Logs-master` folder and save it in local.
+3. Move to `\dist\` folder
+4. Right click on `SFDX Logs.exe` file and click on "**Sent to Desktop (create shortcut)**"
+5. Move to `\Desktop`
+6. Run the application
+
+### MacOs, Linux and other systems
 1. Clone the repository:
 
 ```bash
@@ -37,9 +51,15 @@ cd SFDX-Logs
 pip install -r requirements.txt
 ```
 
-## Usage
+4. Run this comand from terminal:
 
-### Configuration
+```bash
+pyinstaller --noconsole --onefile --icon='.\static\salesforce_icon.ico' '.\src\SFDX Logs.py'
+```
+
+5. A new file will appear in `\dist\` folder, open it and enjoy
+
+## Configuration
 
 Before performing any action you need to setup `\static\cred.json` file:
 
@@ -107,5 +127,3 @@ In this window, you can select and copy the IDs you prefer, and paste them into 
 Once all these steps are completed correctly, a new window will appear:
 
 <img src="https://github.com/kinnik7/SFDX-Logs/blob/master/screenshot/success.JPG" title="" alt="" data-align="center">
-
-
