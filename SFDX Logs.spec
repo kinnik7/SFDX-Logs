@@ -41,5 +41,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['src\\salesforce_icon.ico'],
+    icon=['static\\salesforce_icon.ico'],
 )

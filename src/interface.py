@@ -27,7 +27,7 @@ class SFDXLogInterface:
         self.window = lib.tk.Tk()
         self.window.title("SDFX Logs")
         self.window.geometry("300x200")
-        self.window.iconbitmap("salesforce_icon.ico")
+        self.window.iconbitmap("../static/salesforce_icon.ico")
 
         # Apply a theme using ttkthemes
         style = lib.ThemedStyle(self.window)
@@ -57,11 +57,11 @@ class SFDXLogInterface:
 
     def update_env_options(self):
         environment_options = ['']
-        with open('../cred.json', 'r') as conf_file:
-            if lib.os.path.getsize('../cred.json') > 0:
+        with open('../static/cred.json', 'r') as conf_file:
+            if lib.os.path.getsize('../static/cred.json') > 0:
                 config = lib.json.load(conf_file)
 
-        if lib.os.path.getsize('../cred.json') > 0:
+        if lib.os.path.getsize('../static/cred.json') > 0:
             for env in config:
                 environment_options.append(env)
 
@@ -76,7 +76,7 @@ class SFDXLogInterface:
         if self.config_window is None:
             self.config_window = lib.tk.Toplevel(self.window)
             self.config_window.title("Configure new environment")
-            self.config_window.iconbitmap("salesforce_icon.ico")
+            self.config_window.iconbitmap("../static/salesforce_icon.ico")
             self.config_window.geometry("400x600")
 
             label = lib.ttk.Label(self.config_window, text="(*) = Required field")
@@ -112,8 +112,8 @@ class SFDXLogInterface:
         old_config = {}
 
         try:
-            with open('../cred.json', 'r') as config_file:
-                if lib.os.path.getsize('../cred.json') > 0:
+            with open('../static/cred.json', 'r') as config_file:
+                if lib.os.path.getsize('../static/cred.json') > 0:
                     old_config = lib.json.load(config_file)
         except FileNotFoundError:
             pass
@@ -131,7 +131,7 @@ class SFDXLogInterface:
 
         old_config[f"{env_name}"] = new_config
 
-        with open('../cred.json', 'w') as config_file:
+        with open('../static/cred.json', 'w') as config_file:
             lib.json.dump(old_config, config_file, indent=4)
 
         self.config_window.destroy()
@@ -159,7 +159,7 @@ class SFDXLogInterface:
                 self.main_window = lib.tk.Tk()
                 self.main_window.title("SFDX Logs - Enable Logs")
                 self.main_window.geometry("550x210")
-                self.main_window.iconbitmap("salesforce_icon.ico")
+                self.main_window.iconbitmap("../static/salesforce_icon.ico")
 
                 # Apply a theme using ttkthemes
                 style = lib.ThemedStyle(self.main_window)
@@ -222,7 +222,7 @@ class SFDXLogInterface:
             # Create a window to display the results
             self.user_window = lib.tk.Toplevel(self.main_window)
             self.user_window.title(f"Users - [{self.environment_var.get()}]")
-            self.user_window.iconbitmap("salesforce_icon.ico")
+            self.user_window.iconbitmap("../static/salesforce_icon.ico")
 
             self.user_widget = lib.tk.Text(self.user_window, width=50, height=30)
             self.user_widget.pack(side=lib.tk.LEFT, fill=lib.tk.BOTH)

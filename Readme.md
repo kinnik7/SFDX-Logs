@@ -72,19 +72,9 @@ cd SFDX-Logs/cred.json
 }
 ```
 
-And edit it with the correct information required.
-
-### Windows users:
-
-1. Navigate to the exe directory and run the `SFDX Logs.exe` file:
-
-```bash
-cd SFDX-Logs/dist
-
-./"SFDX Logs.exe"
-```
-
 ## How to use it?
+
+You can find the **SFDX Logs.exe** file in the current path: `.\dist\`
 
 In the main window, you can select an environment or create a new one:
 
