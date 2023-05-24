@@ -1,11 +1,12 @@
 # <img src="https://github.com/kinnik7/SFDX-Logs/blob/master/static/salesforce_icon.ico" title="" alt="" data-align="center" width="100" height="100"> SFDX Logs
 
-SFDX-Logs is a Python-based tool for managing logs in Salesforce DX (SFDX) projects.
+SFDX-Logs is a Python-based tool for managing logs in Salesforce (SFDX) projects.
 
 ## Features
 
-- Fetch logs from Salesforce DX projects. 
-- Enable/disable debug logs for specific user IDs.
+- Connect to different environments.
+
+- Enable debug logs for specific user IDs.
 
 ## Requirements
 
