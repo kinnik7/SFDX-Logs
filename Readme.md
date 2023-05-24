@@ -1,4 +1,4 @@
-# <img src="https://github.com/kinnik7/SFDX-Logs/blob/master/static/salesforce_icon.ico" title="" alt="" data-align="center" width="300px" height="300px"> SFDX Logs
+# <img src="https://github.com/kinnik7/SFDX-Logs/blob/master/static/salesforce_icon.ico" title="" alt="" data-align="center" width="200" height="200"> SFDX Logs
 
 SFDX-Logs is a Python-based tool for managing logs in Salesforce DX (SFDX) projects.
 
