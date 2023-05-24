@@ -102,7 +102,13 @@ class SFDXLogInterface:
             save_button = lib.ttk.Button(self.config_window, text="Save", command=lambda: self.save_configuration(entries))
             save_button.pack(pady=10)
         else:
-            self.config_window.lift()
+            self.config_window.destroy()
+            self.config_window = None
+            self.open_configuration_window()
+
+    def on_closing(self):
+        if lib.messagebox.askokcancel("Quit", "Do you want to quit?"):
+            self.config_window.destroy()
 
     def save_configuration(self, entries):
         if not validate_entries(entries):
