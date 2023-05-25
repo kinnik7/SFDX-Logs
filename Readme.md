@@ -52,7 +52,7 @@ cd SFDX-Logs
 pip install -r requirements.txt
 ```
 
-4. Run this comand from terminal:
+4. Run this command from terminal:
 
 ```bash
 pyinstaller --noconsole --onefile --icon='.\static\salesforce_icon.ico' '.\src\SFDX Logs.py'
