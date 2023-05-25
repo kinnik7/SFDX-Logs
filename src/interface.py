@@ -106,9 +106,6 @@ class SFDXLogInterface:
             self.config_window = None
             self.open_configuration_window()
 
-    def on_closing(self):
-        if lib.messagebox.askokcancel("Quit", "Do you want to quit?"):
-            self.config_window.destroy()
 
     def save_configuration(self, entries):
         if not validate_entries(entries):
@@ -240,17 +237,18 @@ class SFDXLogInterface:
             self.user_widget.config(state=lib.tk.DISABLED)
 
         else:
-            warning_message = f"{lib.datetime.now().replace(microsecond=0)}\n\nWarning, the user window is already opened"
-            lib.messagebox.showwarning("Warning", warning_message)
+            self.user_window.destroy()
+            self.user_window = None
+            self.open_user_window()
 
     def validate_hours(self):
         hours = self.hours_entry.get()
-        selected_ids = self.entry.get().split(',')
+        selected_ids = self.entry.get().replace(" ", "").split(',')
         selected_debug_lvl = self.debug_var.get()
         debug_lvl_id = self.db_lvl_map.get(selected_debug_lvl)
         if (hours != "" and str.isdigit(hours)) and (selected_ids[0] != "") and (debug_lvl_id != ""):
             enabled_users = self.data_mng.enable_salesforce_logs(hours, selected_ids, debug_lvl_id)
-            if enabled_users is not None:
+            if enabled_users is not None and len(enabled_users) > 0:
                 success_message = f"{lib.datetime.now().replace(microsecond=0)}\n\n"
                 success_message += "The currents users are enabled successfully:\n"
                 for en_us in enabled_users:
