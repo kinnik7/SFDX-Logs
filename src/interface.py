@@ -8,6 +8,13 @@ def validate_entries(entries):
     return True
 
 
+def validate_debug_logs(db_lvl):
+    for values in db_lvl.values():
+        if values is None or values == '':
+            return False
+    return True
+
+
 class SFDXLogInterface:
     def __init__(self):
         self.db_lvl_map = None
@@ -21,6 +28,7 @@ class SFDXLogInterface:
         self.main_window = None
         self.config_window = None
         self.environment_var = None
+        self.new_debug_lvl = None
         self.debug_level_options = ['']
 
         # Create window
@@ -89,7 +97,7 @@ class SFDXLogInterface:
             for label_text in labels:
                 frame = lib.ttk.Frame(self.config_window)
                 frame.pack(pady=5)
-                label = lib.ttk.Label(frame, text="(*) " + label_text + ":")
+                label = lib.ttk.Label(frame, text="* " + label_text + ":")
                 label.pack(pady=5)
                 if label_text == "Password" or label_text == "Token" or label_text == "Secret Key":
                     entry = lib.ttk.Entry(frame, show="*", width=30)
@@ -105,7 +113,6 @@ class SFDXLogInterface:
             self.config_window.destroy()
             self.config_window = None
             self.open_configuration_window()
-
 
     def save_configuration(self, entries):
         if not validate_entries(entries):
@@ -161,7 +168,7 @@ class SFDXLogInterface:
                 # Create main window
                 self.main_window = lib.tk.Tk()
                 self.main_window.title("SFDX Logs - Enable Logs")
-                self.main_window.geometry("550x210")
+                self.main_window.geometry("550x250")
                 self.main_window.iconbitmap("../static/salesforce_icon.ico")
 
                 # Apply a theme using ttkthemes
@@ -216,6 +223,9 @@ class SFDXLogInterface:
                     refresh_button = lib.ttk.Button(button_frame, text="Change Environment", command=lambda: self.change_env())
                     refresh_button.pack(side=lib.tk.LEFT, padx=5)
 
+                    add_debug_lvl = lib.ttk.Button(self.main_window, text="New Debug Level", command=lambda: self.add_debug_lvl())
+                    add_debug_lvl.pack(pady=5)
+
                     self.window.destroy()
 
     def open_user_window(self):
@@ -227,13 +237,29 @@ class SFDXLogInterface:
             self.user_window.title(f"Users - [{self.environment_var.get()}]")
             self.user_window.iconbitmap("../static/salesforce_icon.ico")
 
-            self.user_widget = lib.tk.Text(self.user_window, width=50, height=30)
-            self.user_widget.pack(side=lib.tk.LEFT, fill=lib.tk.BOTH)
-
-            formatted_text = ""
+            rows = []
+            cols = []
+            i = 1
+            j = 0
+            label = lib.tk.Entry(self.user_window, relief=lib.tk.GROOVE, width=50)
+            label1 = lib.tk.Entry(self.user_window, relief=lib.tk.GROOVE, width=50)
+            label.insert(lib.tk.END, "USERNAME")
+            label1.insert(lib.tk.END, "ID")
+            label.grid(row=0, column=0, pady=2)
+            label1.grid(row=0, column=1, pady=2)
+            rows.append(label)
             for name, user_id in user_ids:
-                formatted_text += f"Username: {name}\nUser ID: {user_id}\n\n"
-            self.user_widget.insert("1.0", formatted_text)
+                e = lib.tk.Entry(self.user_window, relief=lib.tk.GROOVE, width=50)
+                e1 = lib.tk.Entry(self.user_window, relief=lib.tk.GROOVE, width=50)
+                e.insert(lib.tk.END, f'{name}')
+                e1.insert(lib.tk.END, f'{user_id}')
+                e.grid(row=i, column=j, pady=2)
+                e1.grid(row=i, column=j + 1, pady=2)
+                i += 1
+                cols.append(e)
+            rows.append(cols)
+
+            self.user_widget.insert("1.0", rows)
             self.user_widget.config(state=lib.tk.DISABLED)
 
         else:
@@ -263,6 +289,60 @@ class SFDXLogInterface:
             if debug_lvl_id == "":
                 warning_message += "Warning, something went wrong retrieving debug level"
             lib.messagebox.showwarning("Warning", warning_message)
+
+    def add_debug_lvl(self):
+        if self.new_debug_lvl is None:
+            self.new_debug_lvl = lib.tk.Toplevel(self.main_window)
+            self.new_debug_lvl.title("Configure new debug level")
+            self.new_debug_lvl.iconbitmap("../static/salesforce_icon.ico")
+            self.new_debug_lvl.geometry("400x600")
+
+            label = lib.ttk.Label(self.new_debug_lvl, text="(*) = Required field")
+            label.pack(pady=5)
+
+            devname_label = lib.ttk.Label(self.new_debug_lvl, text="* DeveloperName")
+            devname_label.pack(pady=5)
+
+            dev_name = lib.tk.Entry(self.new_debug_lvl, relief=lib.tk.GROOVE, width=30)
+            dev_name.pack(pady=5)
+
+            # Create labels and entry fields for each information
+            labels = ["ApexCode", "ApexProfiling", "Callout", "Database", "System", "Validation", "Visualforce", "Workflow"]
+            entries = ["", "NONE", "ERROR", "WARN", "INFO", "DEBUG", "FINE", "FINER", "FINEST"]
+            debug_levels = {}
+
+            for log in labels:
+                frame = lib.ttk.Frame(self.new_debug_lvl)
+                frame.pack(pady=5)
+                debug_lvl = lib.tk.StringVar(self.new_debug_lvl, entries[1])
+                label = lib.ttk.Label(frame, text="* " + log + " : ")
+                debug_lvl_dropdown = lib.ttk.OptionMenu(frame, debug_lvl, *entries)
+                label.pack(side=lib.tk.LEFT, pady=5)
+                debug_lvl_dropdown.pack(pady=5)
+                debug_levels[log] = debug_lvl
+
+            # Create a button to save the configuration
+            save_button = lib.ttk.Button(self.new_debug_lvl, text="Save", command=lambda: self.save_debug_lvl(debug_levels, dev_name.get()))
+            save_button.pack(pady=10)
+        else:
+            self.new_debug_lvl.destroy()
+            self.new_debug_lvl = None
+            self.add_debug_lvl()
+
+    def save_debug_lvl(self, debug_levels, dev_name):
+        debug_levels_dict = {}
+        for log, debug_lvl in debug_levels.items():
+            debug_levels_dict[log] = debug_lvl.get()
+        debug_levels_dict["DeveloperName"] = dev_name
+        debug_levels_dict["MasterLabel"] = dev_name
+        if not validate_debug_logs(debug_levels_dict):
+            lib.messagebox.showerror("Error", "Please fill in all fields")
+            return
+        else:
+            self.data_mng.create_debug_level(debug_levels_dict)
+            self.new_debug_lvl.destroy()
+            self.new_debug_lvl = None
+            self.main_window()
 
     def change_env(self):
         self.main_window.destroy()
