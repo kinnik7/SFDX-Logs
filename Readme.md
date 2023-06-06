@@ -113,11 +113,19 @@ Once the configuration is completed and the correct environment is selected by c
 
 In this window, you can enter the information to enable the log, including:
 
-- Debug level
+- Select, create or delete a Debug level
 
 - Hour/s to add at the current time
 
 - User ids
+
+By clicking on the **"New Debug Level"** button, a new window will appear:
+
+<img src="https://github.com/kinnik7/SFDX-Logs/blob/master/screenshots/newDebugLevel.JPG" title="" alt="" data-align="center">
+
+Otherwise, to delete a debug level, just select a debug level from dropdown list and then click on **"Delete Debug Level"** and a new window will appear:
+
+<img src="https://github.com/kinnik7/SFDX-Logs/blob/master/screenshots/deleteDebuglevel.JPG" title="" alt="" data-align="center">
 
 If you don't have the list of IDs that you want to enable, you can click the **"Show Users"** button to open a new window:
 
