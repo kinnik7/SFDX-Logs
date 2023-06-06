@@ -135,4 +135,4 @@ In this window, you can select and copy the IDs you prefer, and paste them into 
 
 Once all these steps are completed correctly, a new window will appear:
 
-<img src="https://github.com/kinnik7/SFDX-Logs/blob/master/screenshot/success.JPG" title="" alt="" data-align="center">
+<img src="https://github.com/kinnik7/SFDX-Logs/blob/master/screenshots/success.JPG" title="" alt="" data-align="center">
