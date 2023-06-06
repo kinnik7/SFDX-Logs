@@ -78,3 +78,33 @@ class DataFromSFDC:
         else:
             error_message = f"{lib.datetime.now().replace(microsecond=0)}\n\nError during the request, no response returned!"
             lib.messagebox.showerror("Error", error_message)
+
+    def create_delete_debug_level(self, payload, delete_dbg):
+        if self.response is not None:
+            instance_url = self.response.get("instance_url")
+            headers = self.response.get("headers")
+            try:
+                if delete_dbg is True:
+                    response = lib.requests.delete(instance_url + f"/services/data/v52.0/tooling/sobjects/DebugLevel/{payload['Id']}", headers=headers)
+                else:
+                    response = lib.requests.post(instance_url + '/services/data/v52.0/tooling/sobjects/DebugLevel', json=payload, headers=headers)
+                if response.status_code == 201:
+                    info_message = f"{lib.datetime.now().replace(microsecond=0)}\n\nNew debug level {payload['DeveloperName']} inserted successfully"
+                    lib.messagebox.showinfo("Completed", info_message)
+                    return True
+                elif response.status_code == 204:
+                    info_message = f"{lib.datetime.now().replace(microsecond=0)}\n\nDebug level {payload['DeveloperName']} was deleted successfully"
+                    lib.messagebox.showinfo("Completed", info_message)
+                    return True
+                else:
+                    error_message = f"{lib.datetime.now().replace(microsecond=0)}\n\nError during the request: {response.content}"
+                    lib.messagebox.showerror("Error", error_message)
+                    return False
+            except Exception as e:
+                error_message = f"{lib.datetime.now().replace(microsecond=0)}\n\nError while searching for Debug Levels: {str(e)}"
+                lib.messagebox.showerror("Error", error_message)
+                return
+        else:
+            error_message = f"{lib.datetime.now().replace(microsecond=0)}\n\nError during the request, no response returned!"
+            lib.messagebox.showerror("Error", error_message)
+            return False
