@@ -119,6 +119,10 @@ In this window, you can enter the information to enable the log, including:
 
 - User ids
 
+- Change the selected environment
+
+By clicking on the **"Change Environment"** button the current window will be closed and the main window will appear.
+
 By clicking on the **"New Debug Level"** button, a new window will appear:
 
 <img src="https://github.com/kinnik7/SFDX-Logs/blob/master/screenshots/newDebugLevel.JPG" title="" alt="" data-align="center">
