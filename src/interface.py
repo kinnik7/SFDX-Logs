@@ -169,7 +169,7 @@ class SFDXLogInterface:
                 # Create main window
                 self.main_window = lib.tk.Tk()
                 self.main_window.title("SFDX Logs - Enable Logs")
-                self.main_window.geometry("550x270")
+                self.main_window.geometry("550x310")
                 self.main_window.iconbitmap("../static/salesforce_icon.ico")
 
                 # Apply a theme using ttkthemes
@@ -232,6 +232,15 @@ class SFDXLogInterface:
 
                     refresh_button = lib.ttk.Button(button_frame, text="Change Environment", command=lambda: self.change_env())
                     refresh_button.pack(side=lib.tk.LEFT, padx=5)
+
+                    delete_all_frame = lib.ttk.Frame(self.main_window)
+                    delete_all_frame.pack(pady=5)
+
+                    delete_all_label = lib.ttk.Label(delete_all_frame, text="Click here to delete all logs in the environment: ")
+                    delete_all_label.pack(side=lib.tk.LEFT, padx=5)
+
+                    delete_all_button = lib.ttk.Button(delete_all_frame, text="Delete All", command=lambda: self.data_mng.delete_all_logs())
+                    delete_all_button.pack(side=lib.tk.LEFT, padx=5)
 
                     if self.window is not None:
                         self.window.destroy()
