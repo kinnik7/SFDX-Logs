@@ -121,6 +121,8 @@ In this window, you can enter the information to enable the log, including:
 
 - Change the selected environment
 
+- Delete all the log files in the environment
+
 By clicking on the **"Change Environment"** button the current window will be closed and the main window will appear.
 
 By clicking on the **"New Debug Level"** button, a new window will appear:
