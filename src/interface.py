@@ -36,7 +36,7 @@ class SFDXLogInterface:
         self.window = lib.tk.Tk()
         self.window.title("SDFX Logs")
         self.window.geometry("300x200")
-        self.window.iconbitmap("static/salesforce_icon.ico")
+        self.window.iconbitmap("../static/salesforce_icon.ico")
 
         # Apply a theme using ttkthemes
         style = lib.ThemedStyle(self.window)
@@ -66,11 +66,11 @@ class SFDXLogInterface:
 
     def update_env_options(self):
         environment_options = ['']
-        with open('static/cred.json', 'r') as conf_file:
-            if lib.os.path.getsize('static/cred.json') > 0:
+        with open('../static/cred.json', 'r') as conf_file:
+            if lib.os.path.getsize('../static/cred.json') > 0:
                 config = lib.json.load(conf_file)
 
-        if lib.os.path.getsize('static/cred.json') > 0:
+        if lib.os.path.getsize('../static/cred.json') > 0:
             for env in config:
                 environment_options.append(env)
 
@@ -85,7 +85,7 @@ class SFDXLogInterface:
         if self.config_window is None:
             self.config_window = lib.tk.Toplevel(self.window)
             self.config_window.title("Configure new environment")
-            self.config_window.iconbitmap("static/salesforce_icon.ico")
+            self.config_window.iconbitmap("../static/salesforce_icon.ico")
             self.config_window.geometry("400x600")
 
             label = lib.ttk.Label(self.config_window, text="(*) = Required field")
@@ -123,8 +123,8 @@ class SFDXLogInterface:
         old_config = {}
 
         try:
-            with open('static/cred.json', 'r') as config_file:
-                if lib.os.path.getsize('static/cred.json') > 0:
+            with open('../static/cred.json', 'r') as config_file:
+                if lib.os.path.getsize('../static/cred.json') > 0:
                     old_config = lib.json.load(config_file)
         except FileNotFoundError:
             pass
@@ -142,7 +142,7 @@ class SFDXLogInterface:
 
         old_config[f"{env_name}"] = new_config
 
-        with open('static/cred.json', 'w') as config_file:
+        with open('../static/cred.json', 'w') as config_file:
             lib.json.dump(old_config, config_file, indent=4)
 
         self.config_window.destroy()
@@ -170,7 +170,7 @@ class SFDXLogInterface:
                 self.main_window = lib.tk.Tk()
                 self.main_window.title("SFDX Logs - Enable Logs")
                 self.main_window.geometry("550x310")
-                self.main_window.iconbitmap("static/salesforce_icon.ico")
+                self.main_window.iconbitmap("../static/salesforce_icon.ico")
 
                 # Apply a theme using ttkthemes
                 style = lib.ThemedStyle(self.main_window)
@@ -253,7 +253,7 @@ class SFDXLogInterface:
             # Create a window to display the results
             self.user_window = lib.tk.Toplevel(self.main_window)
             self.user_window.title(f"Users - [{self.environment_var.get()}]")
-            self.user_window.iconbitmap("static/salesforce_icon.ico")
+            self.user_window.iconbitmap("../static/salesforce_icon.ico")
 
             rows = []
             cols = []
@@ -313,7 +313,7 @@ class SFDXLogInterface:
         if self.new_debug_lvl is None:
             self.new_debug_lvl = lib.tk.Toplevel(self.main_window)
             self.new_debug_lvl.title("Configure new debug level")
-            self.new_debug_lvl.iconbitmap("static/salesforce_icon.ico")
+            self.new_debug_lvl.iconbitmap("../static/salesforce_icon.ico")
             self.new_debug_lvl.geometry("400x600")
 
             label = lib.ttk.Label(self.new_debug_lvl, text="(*) = Required field")
@@ -375,7 +375,7 @@ class SFDXLogInterface:
         if self.confirmation_window is None:
             self.confirmation_window = lib.tk.Toplevel(self.main_window)
             self.confirmation_window.title("Confirm to delete the debug level")
-            self.confirmation_window.iconbitmap("static/salesforce_icon.ico")
+            self.confirmation_window.iconbitmap("../static/salesforce_icon.ico")
             self.confirmation_window.geometry("470x100")
 
             devname_label = lib.ttk.Label(self.confirmation_window, text=f"Are you sure to delete the current \"{debug_lvl_developer_name}\" debug level?")
