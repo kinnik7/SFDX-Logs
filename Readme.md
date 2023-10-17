@@ -55,10 +55,18 @@ pip install -r requirements.txt
 4. Run this command from terminal:
 
 ```bash
-pyinstaller --noconsole --onefile --icon='.\static\salesforce_icon.ico' '.\src\SFDX Logs.py'
+pyinstaller --noconsole --onefile --icon='.\static\salesforce_icon.ico' '.\SFDX Logs.py'
 ```
 
 5. A new file will appear in `\dist\` folder, open it and enjoy
+
+
+6. You can also run the main with this comand:
+
+```bash
+python 'SFDX Logs.py'
+```
+
 
 ## Configuration
 
