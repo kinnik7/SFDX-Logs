@@ -61,16 +61,16 @@ cp .\Linux-MacOS\connection.py .\src\
 cp .\Linux-MacOS\interface.py .\src\
 ```
 
-4. Run this command from terminal:
+5. Run this command from terminal:
 
 ```bash
 pyinstaller --noconsole --onefile --icon='.\static\salesforce_icon.ico' '.\SFDX Logs.py'
 ```
 
-5. A new file will appear in `\dist\` folder, open it and enjoy
+6. A new file will appear in `\dist\` folder, open it and enjoy
 
 
-6. You can also run the main with this comand:
+7. You can also run the main with this comand:
 
 ```bash
 python 'SFDX Logs.py'
