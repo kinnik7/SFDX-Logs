@@ -52,6 +52,15 @@ cd SFDX-Logs
 pip install -r requirements.txt
 ```
 
+4. Before to proceed, you need to replace *connection.py* and *interface.py* from **Linux-MacOS** to **src** folder running these commands from terminal:
+
+```bash
+cp .\Linux-MacOS\connection.py .\src\
+```
+```bash
+cp .\Linux-MacOS\interface.py .\src\
+```
+
 4. Run this command from terminal:
 
 ```bash
